@@ -1,0 +1,10 @@
+---
+import PlaceholderPage from '../components/PlaceholderPage.astro';
+import { contactEmail } from '../navigation';
+---
+
+<PlaceholderPage title="Contact" intro="For partnerships, press, and everything else, email us.">
+  <p class="mt-4 text-lg">
+    <a href={`mailto:${contactEmail}`} class="rounded text-accent underline hover:no-underline">{contactEmail}</a>
+  </p>
+</PlaceholderPage>

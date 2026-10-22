@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/* Brand fonts, bundled with the site (Fontsource). Fraunces loads all axes so WONK and SOFT can be set. */
+@import "@fontsource-variable/fraunces/full.css";
+@import "@fontsource-variable/fraunces/full-italic.css";
+@import "@fontsource-variable/bricolage-grotesque/index.css";
+@import "@fontsource-variable/inter/index.css";
+@import "@fontsource-variable/jetbrains-mono/index.css";
+
+/* Brand tokens from CLAUDE.md (chosen October 21, 2026). Each one becomes a Tailwind class, e.g. bg-ground, text-secondary, font-display. */
+@theme {
+  /* colors ("Blue B") */
+  --color-ground: #0A2472;    /* royal blue — main background */
+  --color-text: #F7F3EA;      /* cream — text on ground */
+  --color-secondary: #E8B04B; /* brass — headline highlights, primary buttons */
+  --color-accent: #4FD1FF;    /* cyan — logo badge, tags, links */
+  --color-pop: #FF4F9A;       /* hot pink — sparing pops */
+
+  /* deeper shades for use on cream backgrounds (from the logo notes) */
+  --color-secondary-deep: #A86E0E;
+  --color-accent-deep: #0B7FA8;
+  --color-pop-deep: #D6246E;
+
+  /* type (combo "C · Serif logo, bold headlines") */
+  --font-logo: 'Fraunces Variable', 'Fraunces', Georgia, serif;
+  --font-logo--font-variation-settings: 'WONK' 0, 'SOFT' 0;
+  --font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', sans-serif;
+  --font-highlight: 'Fraunces Variable', 'Fraunces', Georgia, serif;
+  --font-highlight--font-variation-settings: 'WONK' 0, 'SOFT' 0;
+  --font-body: 'Inter Variable', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-ground);
+    color: var(--color-text);
+    font-family: var(--font-body);
+  }
+
+  /* Visible focus for keyboard users, everywhere */
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+---
+// Temporary page body for sections we haven't built yet.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Props {
+  title: string;
+  intro: string;
+  soon?: boolean;
+}
+
+const { title, intro, soon = false } = Astro.props;
+---
+
+<BaseLayout title={title} description={intro}>
+  {soon && <p class="mb-4 font-mono text-sm uppercase tracking-wider text-pop">Coming soon</p>}
+  <h1 class="font-display text-4xl font-extrabold sm:text-6xl">{title}</h1>
+  <p class="mt-6 max-w-2xl text-lg text-text/90">{intro}</p>
+  <slot />
+</BaseLayout>

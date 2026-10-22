@@ -1,0 +1,37 @@
+---
+import { mainNav, contactEmail } from '../navigation';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-text/15">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1fr_2fr]">
+    <div>
+      <img src="/brand/wordmark-on-dark.svg" alt="Poulios Brothers" width="160" height="80" class="h-20 w-auto" />
+      <p class="mt-4 max-w-xs text-sm text-text/80">A place for young people to start their climate journey.</p>
+    </div>
+
+    <nav aria-label="Footer">
+      <ul class="grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3">
+        {
+          mainNav.map((item) => (
+            <li>
+              <a href={item.href} class="rounded hover:text-accent">{item.label}</a>
+            </li>
+          ))
+        }
+        <li><a href="/projects" class="rounded hover:text-accent">Projects</a></li>
+        <li><a href="/journal" class="rounded hover:text-accent">Journal</a></li>
+        <li><a href="/contact" class="rounded hover:text-accent">Contact</a></li>
+        <li class="text-text/80">
+          Post your project <span class="font-mono text-xs uppercase text-pop">Soon</span>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-4 border-t border-text/15 px-4 py-6 font-mono text-xs text-text/80 sm:px-6">
+    <a href={`mailto:${contactEmail}`} class="rounded text-accent hover:underline">{contactEmail}</a>
+    <p>&copy; {year} Poulios Brothers</p>
+  </div>
+</footer>

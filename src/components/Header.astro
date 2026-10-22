@@ -1,0 +1,64 @@
+---
+import { mainNav, subscribeHref } from '../navigation';
+
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="relative border-b border-text/15">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4 sm:px-6">
+    <a href="/" class="shrink-0 rounded">
+      <img src="/brand/lockup-on-dark.svg" alt="Poulios Brothers, home" width="140" height="48" class="h-12 w-auto" />
+    </a>
+
+    <button
+      type="button"
+      id="menu-button"
+      class="rounded border border-text/40 px-3 py-2 font-display font-bold lg:hidden"
+      aria-expanded="false"
+      aria-controls="site-nav"
+    >
+      Menu
+    </button>
+
+    <nav
+      id="site-nav"
+      aria-label="Main"
+      class="absolute inset-x-0 top-20 z-40 hidden border-b border-text/15 bg-ground px-4 pb-6 data-[open]:block sm:px-6 lg:static lg:block lg:border-0 lg:p-0"
+    >
+      <ul class="flex flex-col gap-1 lg:flex-row lg:items-center lg:gap-6">
+        {
+          mainNav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={current === item.href ? 'page' : undefined}
+                class="block rounded py-2 font-display font-bold hover:text-accent aria-[current=page]:text-secondary lg:py-1"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+        <li class="pt-3 lg:pt-0">
+          <a
+            href={subscribeHref}
+            class="inline-block rounded bg-secondary px-4 py-2 font-display font-bold text-ground hover:bg-text"
+          >
+            Subscribe
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const button = document.getElementById('menu-button');
+  const nav = document.getElementById('site-nav');
+
+  button?.addEventListener('click', () => {
+    const open = button.getAttribute('aria-expanded') !== 'true';
+    button.setAttribute('aria-expanded', String(open));
+    nav?.toggleAttribute('data-open', open);
+  });
+</script>

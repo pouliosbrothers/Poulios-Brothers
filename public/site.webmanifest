@@ -1,0 +1,11 @@
+{
+  "name": "Poulios Brothers",
+  "short_name": "Poulios",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#0A2472",
+  "background_color": "#0A2472",
+  "display": "browser"
+}
